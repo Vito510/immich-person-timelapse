@@ -1,14 +1,20 @@
 import requests
 import shutil
+import os
 from PIL import Image, ImageOps
 from tqdm import tqdm
 
-API_KEY = "key"
+API_KEY = "apikey"
 IMMICH_ADDRESS = "http://192.168.100.45:2283"
 personId = "df5421a4-f992-47f4-881e-b024c2e19a4e"
 IMG_FILE_TYPES = ["jpg", "JPG", "png", "PNG"]
 # ffmpeg -r 15 -i "norm/%d.jpg" -vf reverse movie.mp4
 
+if not os.path.exists("data"):
+    os.mkdir("data")
+
+if not os.path.exists("norm"):
+    os.mkdir("norm")
 
 def fetch_buckets(personId):
 
